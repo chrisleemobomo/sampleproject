@@ -26,7 +26,7 @@ elif "-t-test" in sys.argv:
 elif "-t-appium" in sys.argv:
     world.server_url = "http://0.0.0.0:4723"
 else:
-    world.server_url = "https://google.com"
+    world.server_url = "https://reverb.com/"
 
 # Selects browser size based off of argument
 if "-t-iphone" in sys.argv:
@@ -51,6 +51,7 @@ else:
 def setUpClass():
     world.driver = None
     if "-t-chrome" in sys.argv:
+        #world.driver = webdriver.Chrome("/Users/chrislee/lettuce/drivers/chromedriver237")
         world.driver = webdriver.Chrome("/home/chris/chromedriver")
     elif "-t-firefox" in sys.argv:
         world.driver = webdriver.Firefox(executable_path="/Users/chrislee/lettuce/drivers/geckodriver")
@@ -75,6 +76,7 @@ def setUpClass():
        options.add_argument('--headless')
        options.add_argument('--disable-gpu')  # Last I checked this was necessary.
        world.driver = webdriver.Chrome('/home/chris/chromedriver', chrome_options=options)
+       #world.driver = webdriver.Chrome('/Users/chrislee/lettuce/drivers/chromedriver237', chrome_options=options)
 
     world.driver.set_window_size(browser_width, browser_height)
 

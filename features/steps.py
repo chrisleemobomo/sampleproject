@@ -44,6 +44,17 @@ class Steps(object):
     def then_i_should_be_taken_to_group1(step, group1):
         assert(group1 in world.driver.current_url)
 
+    @step(u'When I fill in the search field with "([^"]*)"')
+    def when_i_fill_in_the_search_field_with_group1(step, group1):
+        time.sleep(2)
+        world.driver.find_element_by_xpath('/html/body/header/div[3]/nav/div[2]/div[1]/div/div/div/input').send_keys(str(group1))
+        time.sleep(1)
+
+    @step(u'Then I should see results')
+    def then_i_should_see_results(step):
+        world.driver.find_element_by_xpath('//*[text()="PRS McCarty 594 Trampas Green 10 Top w/ Case"]')
+        time.sleep(2)
+
     @step(u'When I fill in forgot password email with "([^"]*)"')
     def when_i_fill_in_forgot_password_email_with_group1(step, group1):
         world.driver.find_element_by_id("userName").send_keys(str(group1))
@@ -61,7 +72,7 @@ class Steps(object):
 
     @step(u'And I click the Submit button')
     def and_i_click_the_sign_in_button(step):
-        world.driver.find_element_by_xpath("/html/body/div[2]/div[2]/div/div/form/div[2]/div/div/div[4]/div/button").click()
+        world.driver.find_element_by_xpath("/html/body/header/div[3]/nav/div[2]/div[1]/div/div/div/a").click()
         time.sleep(2)
 
     @step(u'Then I should see the forgot password confirmation')
