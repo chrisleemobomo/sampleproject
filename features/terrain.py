@@ -16,11 +16,11 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 if "-t-local" in sys.argv:
     world.server_url = "http://127.0.0.1:8080"
 elif "-t-dev" in sys.argv:
-    world.server_url = "https://ec2-52-206-242-67.compute-1.amazonaws.com/public/#/"
+    world.server_url = "localhost"
 elif "-t-stage" in sys.argv:
-    world.server_url = "https://ec2-52-206-242-67.compute-1.amazonaws.com/public/#/"
+    world.server_url = "localhost"
 elif "-t-prod" in sys.argv:
-    world.server_url = "https://ec2-52-206-242-67.compute-1.amazonaws.com/public/#/"
+    world.server_url = "localhost"
 elif "-t-test" in sys.argv:
     world.server_url = "https://google.com/"
 elif "-t-appium" in sys.argv:
@@ -71,7 +71,10 @@ def setUpClass():
         world.driver = platform_android.driver()
         world.translator = platform_android.id_translator
     else:
-        world.driver = webdriver.Chrome("/home/chris/chromedriver")
+       options = Options()
+       options.add_argument('--headless')
+       options.add_argument('--disable-gpu')  # Last I checked this was necessary.
+       world.driver = webdriver.Chrome('/home/chris/chromedriver', chrome_options=options)
 
     world.driver.set_window_size(browser_width, browser_height)
 
