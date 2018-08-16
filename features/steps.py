@@ -52,7 +52,7 @@ class Steps(object):
 
     @step(u'Then I should see results')
     def then_i_should_see_results(step):
-        world.driver.find_element_by_xpath('//*[text()="PRS McCarty 594 Trampas Green 10 Top w/ Case"]')
+        world.driver.find_element_by_xpath('//*[text()="PRS McCarty 594 Trampas Green 10 Top w/ Casesds"]')
         time.sleep(2)
 
     @step(u'When I fill in forgot password email with "([^"]*)"')
