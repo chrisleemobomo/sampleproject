@@ -16,3 +16,9 @@ Scenario: Search for something
   When I fill in the search field with "PRS 594"
   And I click the Submit button
   Then I should see results
+
+Scenario: Search for something
+  Given I am on "/"
+  When I fill in the search field with "PRS 5fsd"
+  And I click the Submit button
+  Then I should see results
