@@ -23,6 +23,8 @@ elif "-t-prod" in sys.argv:
     world.server_url = "localhost"
 elif "-t-test" in sys.argv:
     world.server_url = "https://google.com/"
+elif "-t-reverb" in sys.argv:
+    world.server_url = "https://reverb.com/"    
 elif "-t-appium" in sys.argv:
     world.server_url = "http://0.0.0.0:4723"
 else:
